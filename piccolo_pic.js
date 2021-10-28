@@ -18,43 +18,65 @@ row.appendChild(document.createElement('br'))
 
 function res(id){
      if (id.checked){
-      buf.push(id.value)
+      buf[id.id] = id.value
+      result.innerText = Object.values(buf)
     }else{
-      buf.pop(id.value)
+      delete buf[id.id]
+      result.innerText = Object.values(buf)
     }
-    result.innerText = buf
+
   }
 
+function hid(){
+  if (newDiv.style.visibility != 'hidden'){
+    newDiv.style.visibility = 'hidden'
+  }else{
+    newDiv.style.visibility = ''
+  }
+}
 
-buf = []
+buf = {}
 newDiv = document.createElement("div");
 newDiv.style.border = 'solid 3px black'
 newDiv.id = 'newDiv'
-newDiv.style.width = '40%'
+newDiv.style.width = '100%'
 newDiv.style.height = '80%'
-newDiv.style.marginLeft = '60%'
+//newDiv.style.marginLeft = '60%'
 newDiv.style.marginTop = '125px'
 newDiv.style.zIndex = '9999999'
 newDiv.style.position = 'fixed'
 newDiv.style.background = 'white'
 
 newRow1 = document.createElement('div')
-newRow1.style.width = '33%'
+newRow1.style.width = '25%'
 newRow1.style.height = '70%'
 newRow1.style.float = 'left'
 newDiv.append(newRow1)
 
 newRow2 = document.createElement('div')
-newRow2.style.width = '33%'
+newRow2.style.width = '25%'
 newRow2.style.height = '70%'
 newRow2.style.float = 'left'
 newDiv.append(newRow2)
 
 newRow3 = document.createElement('div')
-newRow3.style.width = '33%'
+newRow3.style.width = '25%'
 newRow3.style.height = '70%'
 newRow3.style.float = 'left'
 newDiv.append(newRow3)
+
+newRow4 = document.createElement('div')
+newRow4.style.width = '25%'
+newRow4.style.height = '70%'
+newRow4.style.float = 'left'
+newDiv.append(newRow4)
+
+hidButn = document.createElement('button')
+hidButn.style.width = '30px'
+hidButn.style.height = '30px'
+hidButn.style.float = 'right'
+hidButn.setAttribute('onclick',"hid()")
+document.getElementsByClassName('header-phone')[0].append(hidButn)
 
 rowCounter = 0
 
@@ -79,11 +101,15 @@ rowCounter=rowCounter+1
   row = newRow2
   addElement(i, url, mini, row)
   rowCounter=rowCounter+1
-}else{
+}else if(rowCounter >15 && rowCounter <24){
   row = newRow3
   addElement(i, url, mini, row)
+  rowCounter=rowCounter+1
 }
-
+else{
+  row = newRow4
+  addElement(i, url, mini, row)
+}
     }
     newDiv.appendChild(result)
 }
