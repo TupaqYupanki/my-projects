@@ -4,7 +4,7 @@
 // @version      0.1
 // @description  try to take over the world!
 // @author       You
-// @match        https://piccolo-detki.ru/kolyaski-spb/kupit-kolyasku/tutis-zippy/tutis-detskaya-kolyaska-3-v-1-uno-plus-2019-risso-142/
+// @match        https://piccolo-detki.ru/*
 // @icon         https://www.google.com/s2/favicons?domain=piccolo-detki.ru
 // @grant        none
 // ==/UserScript==
