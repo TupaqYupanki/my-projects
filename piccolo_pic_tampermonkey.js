@@ -13,29 +13,29 @@
 await new Promise(r => setTimeout(r, 2000));
 
 //function that create new elements: checkboxes and pictures
-window.addElement = function (i, url, mini){
-var newBut = document.createElement('input')
-var newPicUrl = list[i].querySelector('.cm-item-gallery > a > img').src
-var newPic = document.createElement("img")
-newPic.src = newPicUrl
-newBut.type = 'checkbox'
-newBut.id = 'a'+i
-newBut.value = url
-newBut.setAttribute('onclick','res(a'+i+')')
+window.addElement = function (i, url, mini) {
+    var newBut = document.createElement('input')
+    var newPicUrl = list[i].querySelector('.cm-item-gallery > a > img').src
+    var newPic = document.createElement("img")
+    newPic.src = newPicUrl
+    newBut.type = 'checkbox'
+    newBut.id = 'a'+i
+    newBut.value = url
+    newBut.setAttribute('onclick','res(a'+i+')')
 
-//adding created elements to our newDiv
-newDiv.append(newPic)
-newDiv.appendChild(newBut)
+    //adding created elements to our newDiv
+    newDiv.append(newPic)
+    newDiv.appendChild(newBut)
 }
 
 //function for click on checkbox. onclick adding url to JS Object
-window.res = function (id){
+window.res = function (id) {
      if (id.checked){
       buf[id.id] = id.value
       counter = counter + 1
       count.innerText = counter
       result.innerText = Object.values(buf)
-    }else{
+    } else {
       delete buf[id.id]
       counter = counter - 1
       count.innerText = counter
@@ -82,7 +82,7 @@ count.style.fontsize = '20px'
 var buf = {}
 
 //creating element div that will contain img and checkboxes
-var newDiv = document.createElement("div");
+var newDiv = document.createElement("div")
 newDiv.style.border = 'solid 3px black'
 newDiv.id = 'newDiv'
 newDiv.style.width = '60%'
@@ -120,15 +120,15 @@ await new Promise(r => setTimeout(r, 5000));
 
 //fill our div with chekboxes and img
 for (var i in list){
-if(i < list.length){
-var mini = list[i].querySelector('.cm-item-gallery > .cm-gallery-item > .ty-pict').src
-var url = mini.split('thumbnails/55/55/')[0]+mini.split('thumbnails/55/55/')[1].split('.jpg')[0]+'.jpg'
-addElement(i, url, mini)
-}else{//adding count and result span
-            newDiv.appendChild(document.createElement('br'))
-            newDiv.appendChild(count)
-            newDiv.appendChild(document.createElement('br'))
-            newDiv.appendChild(result)
-            break
-         }
+if (i < list.length) {
+  var mini = list[i].querySelector('.cm-item-gallery > .cm-gallery-item > .ty-pict').src
+  var url = mini.split('thumbnails/55/55/')[0]+mini.split('thumbnails/55/55/')[1].split('.jpg')[0]+'.jpg'
+  addElement(i, url, mini)
+} else {//adding count and result span
+    newDiv.appendChild(document.createElement('br'))
+    newDiv.appendChild(count)
+    newDiv.appendChild(document.createElement('br'))
+    newDiv.appendChild(result)
+    break
+  }
 }
