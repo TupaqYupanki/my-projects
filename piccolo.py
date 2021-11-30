@@ -3,14 +3,14 @@ from bs4 import BeautifulSoup
 from openpyxl import load_workbook
 from openpyxl import Workbook
 
-#Читаем книгу
+# Читаем книгу
 wb = load_workbook('Книга1 (2).xlsx')
 
-#делаем активной 2ую страницу
+# делаем активной 2ую страницу
 wb.active = 0
 ws = wb.active
 
-#ws.cell(row=4, column=3).value - зачение ячейки
+# ws.cell(row=4, column=3).value - зачение ячейки
 
 y = 1
 for row in ws.iter_rows(min_row=1, min_col=3, max_col=3, max_row=200, values_only=True):
@@ -21,34 +21,37 @@ for row in ws.iter_rows(min_row=1, min_col=3, max_col=3, max_row=200, values_onl
           url = requests.get(piccolo)
           if '200' in str(url):
               soup = BeautifulSoup(url.content, features="html.parser")
-              mydivs = soup.find_all("span", class_= "ty-price-num")
+              mydivs = soup.find_all("span", class_="ty-price-num")
               if mydivs != []:
                   ws.cell(row=y, column=20).value = mydivs[0].text
-              else: ws.cell(row=y, column=20).value = 'price not found'
+              else:
+                  ws.cell(row=y, column=20).value = 'price not found'
           else:
               print('url unreachable '+piccolo)
               ws.cell(row=y, column=20).value = 'url unreachable'
-    y=y+1
+    y = y+1
 wb.save('test.xlsx')
 
 z = 1
 for row in ws.iter_rows(min_row=1, min_col=5, max_col=5, max_row=200, values_only=True):
     for value in row:
-        if 'konfigurator' in str(value): print('konfigurator founded')
+        if 'konfigurator' in str(value):
+            print('konfigurator founded')
         elif 'https' in str(value):
             lapsi = str(value)
             print(lapsi)
-            url = requests.get(lapsi, headers={'User-Agent':'Test'})
+            url = requests.get(lapsi, headers={'User-Agent': 'Test'})
             if '200' in str(url):
                 soup = BeautifulSoup(url.content, features="html.parser")
-                mydivs = soup.find_all("div", class_= "price")[0]
+                mydivs = soup.find_all("div", class_="price")[0]
                 if mydivs != []:
                     ws.cell(row=z, column=21).value = mydivs.contents[0]
-                else: ws.cell(row=z, column=21).value = 'price not found'
+                else:
+                    ws.cell(row=z, column=21).value = 'price not found'
             else:
                 print('url unreachable '+lapsi)
                 ws.cell(row=z, column=21).value = 'url unreachable'
-    z=z+1
+    z = z+1
 
 wb.save('test.xlsx')
 
@@ -61,21 +64,23 @@ for row in ws.iter_rows(min_row=1, min_col=9, max_col=9, max_row=200, values_onl
             url = requests.get(olant)
             if '200' in str(url):
                 soup = BeautifulSoup(url.content, features="html.parser")
-                mydivs = soup.find("div", class_= "card-price__current")
+                mydivs = soup.find("div", class_="card-price__current")
                 if mydivs != []:
                     ws.cell(row=t, column=22).value = str(mydivs.text)[:-5]
-                else: ws.cell(row=t, column=22).value = 'price not found'
+                else:
+                    ws.cell(row=t, column=22).value = 'price not found'
             else:
                 print('url unreachable '+olant)
                 ws.cell(row=t, column=22).value = 'url unreachable'
-    t=t+1
+    t = t+1
 
 wb.save('test.xlsx')
 
 a = 1
 for row in ws.iter_rows(min_row=1, min_col=13, max_col=13, max_row=200, values_only=True):
     for value in row:
-        if 'konstruktor' in str(value): print('konstruktor founded')
+        if 'konstruktor' in str(value):
+            print('konstruktor founded')
         elif 'https' in str(value):
             akusher = str(value)
             print(akusher)
@@ -86,10 +91,11 @@ for row in ws.iter_rows(min_row=1, min_col=13, max_col=13, max_row=200, values_o
                 mydivs = soup.find("span", id="tovar_price_"+str(akusherId))
                 if mydivs != []:
                     ws.cell(row=a, column=23).value = str(mydivs.text)
-                else: ws.cell(row=a, column=23).value = 'price not found'
+                else:
+                    ws.cell(row=a, column=23).value = 'price not found'
             else:
                 print('url unreachable '+akusher)
                 ws.cell(row=a, column=23).value = 'url unreachable'
-    a=a+1
+    a = a+1
 
 wb.save('test.xlsx')
