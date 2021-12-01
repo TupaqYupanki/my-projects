@@ -4,7 +4,7 @@ from openpyxl import load_workbook
 from openpyxl import Workbook
 
 #Читаем книгу
-wb = load_workbook('Книга1 (2).xlsx')
+wb = load_workbook('book.xlsx')
 
 #делаем активной 2ую страницу
 wb.active = 0
@@ -43,7 +43,7 @@ for row in ws.iter_rows(min_row=1, min_col=5, max_col=5, max_row=200, values_onl
                 soup = BeautifulSoup(url.content, features="html.parser")
                 mydivs = soup.find_all("div", class_= "price")[0]
                 if mydivs != []:
-                    ws.cell(row=z, column=21).value = mydivs.contents[0]
+                    ws.cell(row=z, column=21).value = mydivs.contents[0].text
                 else: ws.cell(row=z, column=21).value = 'price not found'
             else:
                 print('url unreachable '+lapsi)
