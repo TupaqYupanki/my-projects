@@ -16,16 +16,17 @@ while 1:
             'joker1.png', confidence=0.8))
         print('found it')
         time.sleep(random.uniform(2.5, 3.5))
+        if pyautogui.pixel(938, 596)[0] == 66:
+            pyautogui.press('insert')
+            time.sleep(random.randint(250, 400))
+            pyautogui.press('insert')
     else:
         print("I am unable to see it")
         pyautogui.press("f1")
-        time.sleep(0.7)
+        time.sleep(0.3)
         pyautogui.press('enter')
-        time.sleep(random.uniform(1, 2))
-        if pyautogui.pixel(938, 596)[0] == 66:
-            pyautogui.press('insert')
-            time.sleep(random.randint(150, 300))
-            pyautogui.press('insert')
+        time.sleep(random.uniform(0.6, 1.6))
+
 
 # 938.596
 # 66 66 66
