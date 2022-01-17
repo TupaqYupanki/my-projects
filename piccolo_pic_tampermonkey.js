@@ -44,7 +44,6 @@ window.res = function (id) {
 
   }
 
-
 //function for button that hide newDiv window
 window.hid = function (){
   if (newDiv.style.visibility != 'hidden'){
@@ -53,6 +52,15 @@ window.hid = function (){
     newDiv.style.visibility = ''
   }
 }
+
+//function for button that switch between comma and space
+window.switchch = function (){
+  if (result.innerText.includes(",")) {
+    result.innerText = result.innerText.replaceAll(',', ' ')
+  }else if (result.innerText.includes(" ")) {
+    result.innerText = result.innerText.replaceAll(' ', ',')
+  }
+  }
 
 //function created checkbox that toggle all checkboxes in newDiv
 window.toggle = function (source){
@@ -102,6 +110,17 @@ hidButn.style.height = '30px'
 hidButn.style.float = 'right'
 hidButn.setAttribute('onclick',"hid()")
 document.getElementsByClassName('header-phone')[0].append(hidButn)
+
+//creating button for switching between comma and space
+var switchButn = document.createElement('button')
+switchButn.style.width = '30px'
+switchButn.style.height = '30px'
+switchButn.style.marginTop = '30px'
+switchButn.style.background = 'aquamarine'
+switchButn.setAttribute('onclick', "switchch()")
+document.getElementsByClassName('header-phone')[0].append(switchButn)
+
+
 
 //finding element by class name for adding to that element our newDiv
 var originalDiv = document.getElementsByClassName('tygh-content')[0]
