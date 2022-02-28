@@ -22,23 +22,23 @@ def feed():
     time.sleep(0.2)
 feed()
 while keyboard.is_pressed('q') == False:
-    if feed_timer == 10:
+    if feed_timer == 20:
         feed()
         feed_timer = 0
     else:
         print('feed_timer = '+str(feed_timer))
-        pyautogui.click((random.uniform(615, 810)), (random.uniform(350, 455)))
-        time.sleep(27.3)
-        pyautogui.click((random.uniform(600, 753)), (random.uniform(340, 460)))
-        time.sleep(20)
+        # pyautogui.click((random.uniform(515, 810)), (random.uniform(250, 555)))
+        # time.sleep(17.3)
         # pyautogui.click(685, 374)
         # time.sleep(15)
+
         print("Teleportation")
         feed_timer = feed_timer+1
         pyautogui.press('f1')
         time.sleep(0.1)
         pyautogui.press('enter')
-        time.sleep(12)
+        time.sleep(30)
+        pyautogui.click((random.uniform(600, 753)), (random.uniform(340, 460)))
 
 
 
