@@ -17,6 +17,7 @@ market_json = market.json()
 market_json_str = json.dumps(market_json)
 
 # with open('items.json', 'w') as outfile:
+
 #     outfile.write(items_json_str)
 
 with open('market.json', 'w') as outfile:

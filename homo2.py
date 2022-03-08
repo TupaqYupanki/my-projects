@@ -40,11 +40,11 @@ while keyboard.is_pressed('q') == False:
 
         t=0
         z=0
-        time.sleep(8)
+        time.sleep(4)
         if pyautogui.locateCenterOnScreen('teleport.png', region=(116, 744, 55, 20), confidence=0.9) != None:
             print('empty')
         else:
-            while ((pyautogui.pixel(716, 419)[1] != 239) and (pyautogui.pixel(716, 423)[1] != 239) and (pyautogui.pixel(716, 422)[1] != 239) and (pyautogui.pixel(716, 413)[1] != 239)) and t<=8 and feed_timer <= 600:
+            while ((pyautogui.pixel(716, 419)[1] != 239) and (pyautogui.pixel(716, 423)[1] != 239) and (pyautogui.pixel(716, 422)[1] != 239) and (pyautogui.pixel(716, 413)[1] != 239)) and t<=3 and feed_timer <= 600:
                 if z == 2:
                     pyautogui.click(623,427)
                     t=t+1

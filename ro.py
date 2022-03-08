@@ -42,7 +42,7 @@ while keyboard.is_pressed('q') == False:
         time.sleep(random.uniform(0.4, 0.7))
         if pyautogui.pixel(660, 426)[0] == 66:
             pyautogui.press('insert')
-            time.sleep(random.randint(90, 130))
+            time.sleep(random.randint(70, 100))
             pyautogui.press('insert')
 
 
